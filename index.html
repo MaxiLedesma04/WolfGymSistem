@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Arvo&family=Josefin+Sans&family=Kanit:wght@100;500&family=Lobster+Two:wght@700&family=Lumanosimo&family=Mukta:wght@500&family=Nunito:wght@300&family=Tilt+Neon&family=Ysabeau+Infant:wght@500&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>Sistema de Gym</title>
+</head>
+<body>
+  <header class="bg-black h-32 flex justify-around">
+    <section id="navbarHome" class="">
+    <h1 class="title text-[#bcf7a4] text-5xl p-4 mt-5">WOLF GYM</h1>
+    </section>
+    <section id="navbarTables" class="hidden">
+      <h1 class="title text-[#bcf7a4] text-5xl p-4"> WOLF GYM </h1>
+    <button id="navbHome" class="rounded p-2 bg-black font-sans text-2xl text-[#bcf7a4] font-bold hover:text-black hover:bg-[#bcf7a4]" > <a href="#home">INICIO</a></button>
+    <button id="navbIngresar" class="rounded p-2 bg-black font-sans text-2xl text-[#bcf7a4] font-bold hover:text-black hover:bg-[#bcf7a4]"> <a href="#tables">INGRESAR</a> </button>
+    <button id="navbCobro" class="rounded p-2 bg-black font-sans text-2xl text-[#bcf7a4] font-bold hover:text-black hover:bg-[#bcf7a4]"> <a href="#cobro">COBRAR MEMBRESIA</a></button>
+    <button id="navbRegister" class="rounded p-2 bg-black font-sans text-2xl text-[#bcf7a4] font-bold hover:text-black hover:bg-[#bcf7a4]"> <a href="#register">REGISTRAR CLIENTE</a></button>
+    </section>
+    <section class="mt-5 flex flex-col justify-center items-center campana">
+      <button class="notify" id="toggleButton"><i id="notificaciones" class="fi fi-ss-cowbell text-[#bcf7a4] text-4xl hover:bg-[#bcf7a4] hover:text-black rounded p-2"></i></button>
+      <div id="notificacion" class="content">
+        <div id="" class="flex flex-col items-center justify-center mt-0">          
+          <div class="flex flex-col items-center justify-center mt-0 pb-9">
+            <button id="eliminadosButton"><p class="text-[#bcf7a4] text-2xl font-bold pt-8">Notificaciones</p></button>
+          </div>
+          <div id="clienteNotificado"></div>
+        </div>
+      </div>
+    </section>
+  </header>
+  <main class="back-main">
+    <section id="home" class="flex justify-around pt-24 pb-20 items-center">
+      <div>
+        <img class="w-80 rounded" src="./assets/img/logoWolfGym.png" alt="Logo del gimnasio">
+        </div>
+      <div class="flex flex-col gap-5">
+        <button id="ingresar" class="rounded p-2 bg-black font-sans text-2xl text-[#bcf7a4] font-bold hover:text-black hover:bg-[#bcf7a4]"> <a href="#tables">INGRESAR</a> </button>
+        <button id="cobrar" class="rounded p-2 bg-black font-sans text-2xl text-[#bcf7a4] font-bold hover:text-black hover:bg-[#bcf7a4]"> <a href="#cobro">COBRAR MEMBRESIA</a></button>
+        <button id="registrar" class="rounded p-2 bg-black font-sans text-2xl text-[#bcf7a4] font-bold hover:text-black hover:bg-[#bcf7a4]"> <a href="#register">REGISTRAR CLIENTE</a></button>
+      </div>
+    </section>
+    <!-- ----------------Registro de clientes----------------- -->
+    <section id="register" class="hidden tabla-clientes">
+      <form id="nuevoCliente">
+        <div class="bg-[#212121] flex flex-col gap-5 items-center justify-around">
+          <h2 class="text-[#bcf7a4] text-2xl font-bold pt-8">REGISTRAR CLIENTE</h2>
+          <div class="flex flex-col">
+            <label class="text-[#bcf7a4]" for="nombreCliente">Nombre y Apellido</label>
+            <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="text" name="" id="nombreCliente" />
+            <div id="error-nombre" class="text-red-500 hidden">Por favor completa este campo.</div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex flex-col">
+              <label class="text-[#bcf7a4]" for="dniCliente">DNI</label>
+              <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="number" name="" id="dniCliente" />
+              <div id="error-dni" class="text-red-500 hidden">Por favor completa este campo.</div>
+            </div>
+            <div class="flex flex-col">
+              <label class="text-[#bcf7a4]" for="telefonoCliente">Telefono</label>
+              <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="number" name="" id="telefonoCliente" />
+              <div id="error-telefono" class="text-red-500 hidden">Por favor completa este campo.</div>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex flex-col">
+              <label class="text-[#bcf7a4]" for="diasCliente">Dias que asiste</label>
+              <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="text" name="" id="diasCliente" />
+              <div id="error-dias" class="text-red-500 hidden">Por favor completa este campo.</div>
+            </div>
+            <div class="flex flex-col">
+              <label class="text-[#bcf7a4]" for="horarioCliente">Horario</label>
+              <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="number" name="" id="horarioCliente" />
+              <div id="error-horario" class="text-red-500 hidden">Por favor completa este campo.</div>
+            </div>
+            <div class="flex flex-col">
+              <label class="text-[#bcf7a4]" for="pagoCliente">Monto</label>
+              <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="number" name="" id="pagoCliente" />
+              <div id="error-pago" class="text-red-500 hidden">Por favor completa este campo.</div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label for="fechaForm" class="text-[#bcf7a4]">Fecha</label>
+            <input type="date" id="fechaForm" class="bg-[#424242] rounded h-8 text-[#bcf7a4]">
+            <div id="error-fecha" class="text-red-500 hidden">Por favor completa este campo.</div>
+            <!-- <label class="text-[#bcf7a4]" for="obervacionesCliente">Otros/Obervaciones</label>
+            <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="text" name="" id="obervacionesCliente" /> -->
+          </div>
+          <div class="flex gap-5 pb-8">
+            <button type="reset" class="bg-[#bcf7a4] p-2 rounded">Cancelar</button>
+            <button type="submit" class="bg-[#bcf7a4] p-2 rounded">Agregar</button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- --------------------Tabla de CLientes----------------------->
+    <section id="tables" class="hidden tabla-clientes">
+      <table class="w-full">
+        <thead class="text-[#bcf7a4] w-full">
+          <tr class="w-full border border-slate-400">
+            <th class="text-center" >Nombre y Apellido</th>
+            <th class="text-center" >DNI</th>
+            <th class="text-center" >Telefono</th>
+            <th class="text-center" >Dias</th>
+            <th class="text-center" >Horario</th>
+            <th class="text-center" >Pagos</th>
+            <th class="text-center">Fecha</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+          <tbody id="tbody-clientes">
+            <tr>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+              <td class="text-center gap-5">
+                <button class="text-[#bcf7a4] p-2" ><i class=" fi fi-sr-edit-alt"></i></button>
+                <button class="text-[#bcf7a4] p-2" ><i class=" fi fi-sr-edit-alt"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
+    </section>
+    <!-- ---------------Cobro de membresia------------>
+    <section id="cobro" class="hidden tabla-clientes">
+      <div class="bg-[#212121] flex flex-col gap-5 items-center justify-around">
+        <h2 class="text-[#bcf7a4] text-2xl font-bold pt-8">Registrar pago</h2>
+          <div class="flex flex-col" >
+            <label class="text-[#bcf7a4]" for="dniCobro">DNI</label>
+            <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="num" name="" id="dniCobro">
+          </div>
+          <div class="flex flex-col">
+            <label class="text-[#bcf7a4]" for="fechaCobro">Fecha</label>
+            <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]" type="date" name="" id="fechaCobro">
+          </div>
+          <div class="flex flex-col">
+            <label class="text-[#bcf7a4]" for="montoCobro">Monto</label>
+            <input class="bg-[#424242] rounded h-8 text-[#bcf7a4]"  type="number" name="" id="montoCobro">
+          </div>
+          <div class="flex gap-5 pb-8" >
+            <button id="cancelarCobro" class="bg-[#bcf7a4] p-2 rounded">Cancelar</button>
+            <button id="agregarCobro" class="bg-[#bcf7a4] p-2 rounded">Agregar</button>
+          </div>
+        </div>
+    </section>
+    <!-- -----------------eliminados--------------------- -->
+    <section id="eliminados" class="hidden tabla-clientes">
+      <table id="eliminadosTabla" class="w-full ">
+        <thead class="text-[#bcf7a4] w-full">
+          <tr class="w-full border border-slate-400">
+            <th class="text-center" >Nombre y Apellido</th>
+            <th class="text-center" >DNI</th>
+            <th class="text-center" >Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-eliminados">
+          <tr>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <!-- ------------Modal Eliminar Cliente-------------->
+    <div id="modal-eliminar"
+    class="flex items-center justify-center modal fixed z-10 inset-0 overflow-y-auto hidden">
+    <div
+        class="modal-content flex justify-between flex-col p-4 w-80 drop-shadow-lg bg-[#b240b8] rounded-lg lg:w-3/5">
+        <span class="modal-close text-4xl fo top-0 right-0 mt-4 mr-4 cursor-pointer text-white">&times;</span>
+        <p class="text-xl mb-4 text-white text-center">Está por eliminar la categoría:</p>
+        <h2 id="eliminarCategoria" class="text-white text-2xl text-center"></h2> <!-- Cambiado a h2 -->
+        <button id="eliminarCategoriaBtn"
+            class="w-full mt-4 h-10 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:bg-red-700">Eliminar</button>
+        <!-- Cambiado id y color del botón -->
+        <button class="modal-btn-close w-full mt-2 h-10 bg-purple-700 text-white rounded-lg hover:bg-gray-700 focus:outline-none
+            focus:bg-purple-700 ">Cerrar</button>
+        <!-- Agregado botón de cerrar -->
+    </div>
+</div>
+<div id="modal-eliminar-operacion-tabla"
+    class="flex items-center justify-center modal fixed z-10 inset-0 overflow-y-auto hidden">
+    <div
+        class="modal-content flex justify-between flex-col p-4 w-80 drop-shadow-lg bg-[#b240b8] rounded-lg lg:w-3/5">
+        <span class=" modal-close-X  text-4xl top-0 right-0 mt-4 mr-4 cursor-pointer text-white">&times;</span>
+        <p class="text-xl mb-4 text-white text-center">Seguro quiere eliminar
+            la operación</p>
+        <h2 id="eliminarOperacion" class="text-white text-2xl text-center"></h2>
+        <button id="delete-btn-modal"
+            class="w-full mt-4 h-10 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:bg-red-700">Eliminar</button>
+        <button class="modal-close-operacion w-full mt-2 h-10 bg-purple-700 text-white rounded-lg hover:bg-gray-700
+            focus:outline-none focus:bg-purple-700">Cerrar</button>
+    </div>
+</div>
+  </main>
+  <footer class="bg-black h-20 flex justify-center">
+    <h2 class="text-[#bcf7a4] font-bold font-sans pt-6">Creado por ANUBIT</h2>
+    <img class="w-20" src="./assets/img/ANUBIT-LOGO.png" alt="Logo de ANUBIT">
+  </footer>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html> 
